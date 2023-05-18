@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="button">공유하기</button>
+    <script>
+        window.addEventListener('DOMContentLoaded', function (event) {
+            const button = document.getElementById('button')
+            button.addEventListener('click', function (event) {
+                if (navigator.share) {
+                    alert('Let\'s share')
+                    navigator.share({
+                        title: 'Whebshare API Demo',
+                        url: 'https://github.com',
+                        text: 'Some text',
+                    }).then(resonse => {
+                        console.log('Thanks for sharing')
+                    }).catch(console.error)
+                } else {
+                    alert('share API is not supported')
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
