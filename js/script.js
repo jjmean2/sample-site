@@ -13,4 +13,6 @@ function doCrossOriginFetch() {
 
 window.addEventListener('load', function () {
     doThing();
+    doSameOriginFetch();
+    doCrossOriginFetch();
 });
