@@ -6,16 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        html {
+            height: 100%;
+        }
+
         body {
             margin: 0;
             padding: 0;
+            height: inherit;
         }
 
         .wrapper {
-            min-height: calc(var(--vh, 1vh) * 100);
             position: relative;
             display: flex;
             flex-direction: column;
+        }
+
+        .wrapper-calculate {
+            min-height: calc(var(--vh, 1vh) * 100);
+        }
+
+        .wrapper-no-calculate {
+            min-height: 100%;
         }
 
         header {
@@ -83,13 +95,30 @@
                     longContent.classList.add('hidden')
                 }
             })
+            const methodButton = document.getElementById('calculate')
+            const wrapper = document.getElementById('wrapper')
+            const methodSpan = document.getElementById('method')
+            methodButton.addEventListener('click', function () {
+                if (wrapper.classList.contains('wrapper-calculate')) {
+                    wrapper.classList.remove('wrapper-calculate')
+                    wrapper.classList.add('wrapper-no-calculate')
+                    methodSpan.innerHTML = `100% 방식`
+                } else {
+                    wrapper.classList.add('wrapper-calculate')
+                    wrapper.classList.remove('wrapper-no-calculate')
+                    methodSpan.innerHTML = `calculate 방식`
+
+                }
+
+            })
         }
     </script>
 </head>
 
 <body>
-    <div class="wrapper">
-        <header> Header </header>
+    <div id="wrapper" class="Wrapper wrapper-calculate">
+        <header> Header <button id="calculate">방식 변경</button> <span id="method">calculate 방식</span>
+        </header>
         <main>
             <p> Fugiat sint consectetur nulla nostrud nulla adipisicing voluptate. Adipisicing magna
                 Lorem proident do. Lorem do occaecat voluptate fugiat incididunt aute aliquip
