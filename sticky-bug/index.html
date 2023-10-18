@@ -76,9 +76,8 @@
         }
         overrideVH();
         // We listen to the resize event
-        window.addEventListener('resize', function () {
-            overrideVH();
-        })
+        window.addEventListener('resize', overrideVH)
+        let isListening = true
 
         window.onload = function () {
             const report = document.getElementById("report")
@@ -107,10 +106,24 @@
                     wrapper.classList.add('wrapper-calculate')
                     wrapper.classList.remove('wrapper-no-calculate')
                     methodSpan.innerHTML = `calculate 방식`
+                }
+            })
+            const listenerButton = document.getElementById('listener')
+            const listenerStatus = document.getElementById('listener-status')
+            listenerButton.addEventListener('click', function () {
+                if (isListening) {
+                    window.removeEventListener('resize', overrideVH)
+                    isListening = false
+                    listenerStatus.innerHTML = "No Listening resize event"
+                } else {
+                    window.addEventListener('resize', overrideVH)
+                    isListening = true
+                    listenerStatus.innerHTML = "Listening resize event"
 
                 }
 
             })
+
         }
     </script>
 </head>
@@ -120,6 +133,8 @@
         <header> Header <button id="calculate">방식 변경</button> <span id="method">calculate 방식</span>
         </header>
         <main>
+            <button id="listener">resize listener</button>
+            <span id="listerer-status">Listening resize event</span>
             <p> Fugiat sint consectetur nulla nostrud nulla adipisicing voluptate. Adipisicing magna
                 Lorem proident do. Lorem do occaecat voluptate fugiat incididunt aute aliquip
                 ullamco. Cillum ad occaecat magna non velit reprehenderit est ea ullamco nulla. Elit
