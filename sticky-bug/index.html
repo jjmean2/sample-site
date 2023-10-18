@@ -147,14 +147,17 @@
                 if (wrapper.classList.contains('wrapper-calculate')) {
                     wrapper.classList.remove('wrapper-calculate')
                     wrapper.classList.add('wrapper-no-calculate')
+                    wrapper.classList.remove('wrapper-dvh')
                     methodSpan.innerHTML = `100% 방식`
                 } else if (wrapper.classList.contains('wrapper-no-calculate')) {
+                    wrapper.classList.remove('wrapper-calculate')
                     wrapper.classList.remove('wrapper-no-calculate')
                     wrapper.classList.add('wrapper-dvh')
                     methodSpan.innerHTML = CSS.supports('height: 100dvh') ? `dvh 방식` : 'vh 방식'
                 } else {
                     wrapper.classList.add('wrapper-calculate')
                     wrapper.classList.remove('wrapper-no-calculate')
+                    wrapper.classList.remove('wrapper-dvh')
                     methodSpan.innerHTML = `calculate 방식`
                 }
             })
