@@ -17,6 +17,7 @@
         }
 
         .wrapper {
+            margin: 0;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -30,7 +31,12 @@
             min-height: 100%;
         }
 
+        .wrapper-dvh {
+            min-height: 100dvh;
+        }
+
         header {
+            margin: 0;
             height: 32px;
             background-color: yellow;
             position: sticky;
@@ -48,7 +54,9 @@
         .footer {
             position: sticky;
             height: 64px;
-            padding: 8px;
+            margin: 0;
+            padding-left: 8px;
+            padding-right: 8px;
             bottom: 0;
             background-color: brown;
             display: flex;
@@ -123,6 +131,10 @@
                     wrapper.classList.remove('wrapper-calculate')
                     wrapper.classList.add('wrapper-no-calculate')
                     methodSpan.innerHTML = `100% 방식`
+                } else if (wrapper.classList.contains('wrapper-no-calculate')) {
+                    wrapper.classList.remove('wrapper-no-calculate')
+                    wrapper.classList.add('wrapper-dvh')
+                    methodSpan.innerHTML = `dvh 방식`
                 } else {
                     wrapper.classList.add('wrapper-calculate')
                     wrapper.classList.remove('wrapper-no-calculate')
