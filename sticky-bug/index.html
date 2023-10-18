@@ -76,15 +76,35 @@
         }
         overrideVH();
         // We listen to the resize event
-        window.addEventListener('resize', overrideVH)
-        let isListening = true
 
         window.onload = function () {
             const report = document.getElementById("report")
             let count = 0;
-            window.addEventListener('resize', function () {
+            let isListening = true
+            const resizeListener = function () {
                 report.innerHTML = `resized(${count++}) --vh: ${document.documentElement.style.getPropertyValue('--vh')}`
+            }
+            window.addEventListener('resize', overrideVH)
+            window.addEventListener('resize', resizeListener)
+
+            const listenerButton = document.getElementById('listener')
+            const listenerStatus = document.getElementById('listener-status')
+            listenerButton.addEventListener('click', function () {
+                if (isListening) {
+                    window.removeEventListener('resize', overrideVH)
+                    window.removeEventListener('resize', resizeListener)
+                    isListening = false
+                    listenerStatus.innerHTML = "No Listening resize event"
+                } else {
+                    window.addEventListener('resize', overrideVH)
+                    window.addEventListener('resize', resizeListener)
+                    isListening = true
+                    listenerStatus.innerHTML = "Listening resize event"
+
+                }
+
             })
+            //
             const button = document.getElementById('button')
             const longContent = document.getElementById('long-content')
             button.addEventListener('click', function () {
@@ -94,6 +114,7 @@
                     longContent.classList.add('hidden')
                 }
             })
+            //
             const methodButton = document.getElementById('calculate')
             const wrapper = document.getElementById('wrapper')
             const methodSpan = document.getElementById('method')
@@ -107,21 +128,6 @@
                     wrapper.classList.remove('wrapper-no-calculate')
                     methodSpan.innerHTML = `calculate 방식`
                 }
-            })
-            const listenerButton = document.getElementById('listener')
-            const listenerStatus = document.getElementById('listener-status')
-            listenerButton.addEventListener('click', function () {
-                if (isListening) {
-                    window.removeEventListener('resize', overrideVH)
-                    isListening = false
-                    listenerStatus.innerHTML = "No Listening resize event"
-                } else {
-                    window.addEventListener('resize', overrideVH)
-                    isListening = true
-                    listenerStatus.innerHTML = "Listening resize event"
-
-                }
-
             })
 
         }
