@@ -90,11 +90,28 @@
             const report = document.getElementById("report")
             let count = 0;
             let isListening = true
+            let isChangingText = true
             const resizeListener = function () {
-                report.innerHTML = `resized(${count++}) --vh: ${document.documentElement.style.getPropertyValue('--vh')}`
+                if (isChangingText) {
+                    report.innerHTML = `resized(${count++}) --vh: ${document.documentElement.style.getPropertyValue('--vh')}`
+                } else {
+                    console.log('Resize')
+                }
             }
             window.addEventListener('resize', overrideVH)
             window.addEventListener('resize', resizeListener)
+
+            const changeTextButton = document.getElementById('change-text')
+            const changeTextStatus = document.getElementById('change-text-status')
+            changeTextButton.addEventListener('click', function () {
+                if (isChangingText) {
+                    isChangingText = false
+                    changeTextStatus.innerHTML = "false"
+                } else {
+                    isChangingText = true
+                    changeTextStatus.innerHTML = "true"
+                }
+            })
 
             const listenerButton = document.getElementById('listener')
             const listenerStatus = document.getElementById('listener-status')
@@ -109,7 +126,6 @@
                     window.addEventListener('resize', resizeListener)
                     isListening = true
                     listenerStatus.innerHTML = "Listening resize event"
-
                 }
 
             })
@@ -154,6 +170,8 @@
         <main>
             <button id="listener">resize listener</button>
             <span id="listener-status">Listening resize event</span>
+            <button id="change-text">change text</button>
+            <span id="change-text-status">true</span>
             <p> Fugiat sint consectetur nulla nostrud nulla adipisicing voluptate. Adipisicing magna
                 Lorem proident do. Lorem do occaecat voluptate fugiat incididunt aute aliquip
                 ullamco. Cillum ad occaecat magna non velit reprehenderit est ea ullamco nulla. Elit
