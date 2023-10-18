@@ -21,12 +21,23 @@
             align-items: center;
         }
     </style>
+    <script>
+
+        function overrideVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', vh + 'px');
+        }
+        overrideVH();
+        // We listen to the resize event
+        window.addEventListener('resize', function () {
+            overrideVH();
+        })
+
+    </script>
 </head>
 
 <body>
-    <div>
-        Min-Height 설정
-    </div>
+    <div> Min-Height 설정, Add vh overrides </div>
     <p> Fugiat sint consectetur nulla nostrud nulla adipisicing voluptate. Adipisicing magna Lorem
         proident do. Lorem do occaecat voluptate fugiat incididunt aute aliquip ullamco. Cillum ad
         occaecat magna non velit reprehenderit est ea ullamco nulla. Elit sint commodo laborum minim
