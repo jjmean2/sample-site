@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: 24px;
+        }
+
+        body {
+            margin: 32px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            overflow: hidden;
+            --divider-color: red;
+        }
+
+        .container>* {
+            flex: none;
+        }
+
+        .container>*:nth-last-child(n + 2) {
+            margin-right: 32px;
+        }
+
+        .container>*:nth-child(n+2) {
+            position: relative;
+        }
+
+        .container>*:nth-child(n+2)::before {
+            content: "";
+            position: absolute;
+            left: -16px;
+            border-left: 1px solid var(--divider-color, red);
+            height: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container nowrap">
+        <div class="item">무료취소 2022. 12. 3 까지</div>
+        <div class="item">조식포함 All Included</div>
+        <div class="item">무료 Wifi</div>
+        <div class="item">애견 동반</div>
+        <div class="item">무료 주차장</div>
+        <div class="item">무료 세탁</div>
+        <div class="item">수영장 포함</div>
+        <div class="item">헬스장 포함</div>
+    </div>
+</body>
+
+</html>
