@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <a href="kyte://braze/hotels">카이트 링크</a>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<a href="kyte://braze/hotels">카이트 링크</a>
+		<a id="link" href="">링크</a>
+		<script>
+			const atag = document.querySelector("#link");
+			atag.setAttribute(
+				"href",
+				'intent://%7B"CD":"f3d80e482c2f329a4dc280a26679aea6","TK":"7z-V2Tv3D3eO2d2MD35EiQq-ze7B4-s4VthXUWk04ZE=","LK":"3801476272537813866110308954222476653998229030568412775434942478773963177967470004028617841663668743080360663375142267674240582145157408601461892662788541","DT":"2024-04-01-02:44","TM":"15","CH":"sps.lottecard.co.kr","CU":"https://sps.lottecard.co.kr/ges/initializePmtStt.top?ACSID=fmQ1LAZYtJfJ1NIdFYJB0ZM5XopEOkdhUyu4pzN80aCqkTfe0Wlj!123955490&type=X%22,%22SA%22:%22https://mpl.ahnlab.com%22,%22CV%22:%220%22%7D/#Intent;package=com.ahnlab.v3mobileplus;scheme=v3mobileplusweb;end'
+			);
+		</script>
+	</body>
 </html>
