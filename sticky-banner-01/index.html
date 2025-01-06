@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Banner</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      main {
+        /* overflow: hidden 을 하면, main 이 scroll container가 되어서 sticky가 기대한 대로 동작하지 않음. */
+        /* overflow: hidden; */
+
+        /* overflow: clip을 하면, overflow되는 엘리먼트를 숨기는 동작은 hidden과 비슷하지만, main이 scroll container 가 되지 않아서 sticky도 기대한 대로 동작함. 비교적 최근인 2022년 이후로 모든 주요 브라우저에서 지원.  */
+        overflow: clip;
+
+        /* overflow: hidden, clip 둘다 없으면, 너비가 배너까지 포함하기에 작을 때, 배너 부분까지 수평 방향 scroll이 생기는 이슈가 있음  */
+      }
+      .header {
+        height: 200px;
+        background-color: lightcoral;
+      }
+      .content {
+        min-height: 680dvh;
+        background-color: aquamarine;
+        width: 1000px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .footer {
+        height: 362px;
+        background-color: lightcyan;
+      }
+      .banner-wrapper {
+        position: absolute;
+        top: 0;
+        right: -24px;
+        transform: translateX(100%);
+        bottom: 0;
+        border: 1px solid red;
+      }
+      .banner-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 150px;
+        position: sticky;
+        top: 0;
+      }
+      .banner {
+        height: 100px;
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header class="header">Header</header>
+      <section class="content">
+        Body
+        <div class="banner-wrapper">
+          <div class="banner-container">
+            <div class="banner item1">Item1</div>
+            <div class="banner item2">Item2</div>
+            <div class="banner item3">Item3</div>
+            <div class="banner item4">Item4</div>
+            <div class="banner item5">Item5</div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">Footer</footer>
+    </main>
+  </body>
+</html>
