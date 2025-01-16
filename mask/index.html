@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/imask"></script>
+  </head>
+  <body>
+    <input type="text" id="ssn" name="ssn" />
+    <script>
+      const input = document.getElementById("ssn");
+      const maskOptions = {
+        mask: "000000 - *******",
+        definitions: {
+          "*": {
+            mask: "0",
+            displayChar: "\u2022",
+          },
+        },
+      };
+      const mask = IMask(element, maskOptions);
+    </script>
+  </body>
+</html>
