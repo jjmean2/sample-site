@@ -7,7 +7,7 @@
     <script src="https://unpkg.com/imask"></script>
   </head>
   <body>
-    <input type="text" id="ssn" name="ssn" />
+    <input type="text" id="ssn" name="ssn" size="30" />
     <script>
       const input = document.getElementById("ssn");
       const maskOptions = {
@@ -19,7 +19,7 @@
           },
         },
       };
-      const mask = IMask(element, maskOptions);
+      const mask = IMask(input, maskOptions);
     </script>
   </body>
 </html>
